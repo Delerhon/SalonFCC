@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.16 (Ubuntu 12.16-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.16 (Ubuntu 12.16-0ubuntu0.20.04.1)
+-- Dumped from database version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
+-- Dumped by pg_dump version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -49,9 +49,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.appointments (
     appointment_id integer NOT NULL,
-    customer_id integer,
     service_id integer,
-    "time" character varying(10)
+    "time" character varying(10),
+    customer_id integer
 );
 
 
@@ -85,8 +85,8 @@ ALTER SEQUENCE public.appointments_appointment_id_seq OWNED BY public.appointmen
 
 CREATE TABLE public.customers (
     customer_id integer NOT NULL,
-    phone character varying(20),
-    name character varying(30)
+    phone character varying(100),
+    name character varying(100)
 );
 
 
@@ -173,41 +173,15 @@ ALTER TABLE ONLY public.services ALTER COLUMN service_id SET DEFAULT nextval('pu
 -- Data for Name: appointments; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.appointments VALUES (5, 24, 1, '');
-INSERT INTO public.appointments VALUES (6, 24, 1, '');
-INSERT INTO public.appointments VALUES (73, 24, 1, '');
-INSERT INTO public.appointments VALUES (19, 3, 1, '12:15');
-INSERT INTO public.appointments VALUES (85, 24, 1, '');
-INSERT INTO public.appointments VALUES (24, 24, 1, '');
-INSERT INTO public.appointments VALUES (93, 56, 3, '16:18');
-INSERT INTO public.appointments VALUES (94, 62, 3, '18:00');
-INSERT INTO public.appointments VALUES (95, 3, 3, '17:30');
-INSERT INTO public.appointments VALUES (32, 3, 3, '15:00');
-INSERT INTO public.appointments VALUES (96, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (97, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (98, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (99, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (37, 24, 1, '');
-INSERT INTO public.appointments VALUES (100, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (101, 3, 1, '15:10');
-INSERT INTO public.appointments VALUES (102, 88, 1, '13:15');
-INSERT INTO public.appointments VALUES (103, 3, 4, '22:00');
-INSERT INTO public.appointments VALUES (104, 144, 2, '13am');
-INSERT INTO public.appointments VALUES (49, 24, 1, '');
-INSERT INTO public.appointments VALUES (61, 24, 1, '');
+INSERT INTO public.appointments VALUES (4, 1, '10:30', 17);
+INSERT INTO public.appointments VALUES (5, 2, '11am', 17);
 
 
 --
 -- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.customers VALUES (3, '555-555-5599', 'Jens');
-INSERT INTO public.customers VALUES (62, '555-555-5577', 'Anita');
-INSERT INTO public.customers VALUES (144, '555-555-5555', 'asda');
-INSERT INTO public.customers VALUES (24, '', '');
-INSERT INTO public.customers VALUES (88, '555-555-5515', 'Anita');
-INSERT INTO public.customers VALUES (50, '555-555-5588', 'Anita');
-INSERT INTO public.customers VALUES (56, '555-555-5533', 'Anita');
+INSERT INTO public.customers VALUES (17, '555-555-5555', 'Fabio');
 
 
 --
@@ -215,24 +189,24 @@ INSERT INTO public.customers VALUES (56, '555-555-5533', 'Anita');
 --
 
 INSERT INTO public.services VALUES (1, 'cut');
-INSERT INTO public.services VALUES (2, 'wash');
-INSERT INTO public.services VALUES (3, 'color');
-INSERT INTO public.services VALUES (4, 'trim');
-INSERT INTO public.services VALUES (5, 'extend');
+INSERT INTO public.services VALUES (2, 'color');
+INSERT INTO public.services VALUES (3, 'perm');
+INSERT INTO public.services VALUES (4, 'style');
+INSERT INTO public.services VALUES (5, 'trim');
 
 
 --
 -- Name: appointments_appointment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 104, true);
+SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 5, true);
 
 
 --
 -- Name: customers_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.customers_customer_id_seq', 149, true);
+SELECT pg_catalog.setval('public.customers_customer_id_seq', 42, true);
 
 
 --
